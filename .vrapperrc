@@ -1,0 +1,24 @@
+set smartcase	" 대문자가 검색어 문자열에 포함될 때에는 noignorecase
+set ignorecase 	" 검색시 대소문자 무시
+set hlsearch	" 검색시 하이라이트(색상 강조)
+set incsearch	" 검색 키워드 입력시 한 글자 입력할 때마다 점진 검색
+
+set shiftwidth=4	" shift를 4칸으로 ( >, >>, <, << 등의 명령어)
+set tabstop=4		" tab을 4칸으로
+"set noimd		" no imdisable 한글 입력기 관련
+set laststatus=2	" 상태바를 언제나 표시할 것
+set showmatch " 일치하는 괄호 하이라이팅
+set sm	" 매치되는 괄호 표시
+set history=1000 "  vi 편집기록 기억갯수 .viminfo에 기록
+
+" ESC 대용
+imap jk <Esc>
+imap kj <Esc>
+imap ㅓㅏ <Esc>
+imap ㅏㅓ <Esc>
+
+" 명령행 한글 입력 오류 처리
+ca ㅈ w
+
+" ctrl-j 로 라인을 분리.
+"nnoremap <NL> i<CR><ESC>
