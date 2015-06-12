@@ -3,7 +3,7 @@ set ignorecase 	" 검색시 대소문자 무시
 set hlsearch	" 검색시 하이라이트(색상 강조)
 set incsearch	" 검색 키워드 입력시 한 글자 입력할 때마다 점진 검색
 
-set shiftwidth=4	" shift를 4칸으로 ( >, >>, <, << 등의 명령어)
+set shiftwidth=2	" shift를 2칸으로 ( >, >>, <, << 등의 명령어)
 set tabstop=4		" tab을 4칸으로
 "set noimd		" no imdisable 한글 입력기 관련
 set laststatus=2	" 상태바를 언제나 표시할 것
@@ -17,11 +17,36 @@ imap kj <Esc>
 imap ㅓㅏ <Esc>
 imap ㅏㅓ <Esc>
 
-" 명령행 한글 입력 오류 처리
-ca ㅈ w
-
 " ctrl-j 로 라인을 분리.
 map <c-j> i<ENTER><ESC>
 
 " block comment 입력
 imap ,/ /* */<ESC>2F*a<SPACE>
+
+
+set gvimpath=E:\Program Files (x86)\Vim\vim74\gvim.exe
+
+nnoremap Y y$
+
+" vrapper 에서 지원하지 않는 [[, ]] 기능을 구현한다.
+"https://github.com/vrapper/vrapper/issues/352
+eclipseaction eclipsenextmember org.eclipse.jdt.ui.edit.text.java.goto.next.member
+nnoremap ]] :eclipsenextmember<cr>
+eclipseaction eclipseprevmember org.eclipse.jdt.ui.edit.text.java.goto.previous.member
+nnoremap [[ :eclipseprevmember<cr>
+
+"편집중인 파일이 위치하는 곳을 운영체제 기본 파일 네비게이터에서 열어준다.
+eclipseaction	opendir	org.eclipse.ui.ide.showInSystemExplorer
+
+" search reference 를 수행한다.
+eclipseaction	ref		org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
+
+" class, method doc 주석을 보여준다
+eclipseuiaction doc org.eclipse.ui.edit.text.showInformation
+
+" 편의 기능들 *(주석 달기 귀찮다)
+eclipseaction	ren		org.eclipse.jdt.ui.edit.text.java.rename.element
+eclipseuiaction	fix		org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+eclipseaction	res		org.eclipse.ui.navigate.openResource
+eclipseaction	getset	org.eclipse.jdt.ui.edit.text.java.create.getter.setter
+eclipseaction	tostring	org.eclipse.jdt.ui.edit.text.java.generate.tostring
