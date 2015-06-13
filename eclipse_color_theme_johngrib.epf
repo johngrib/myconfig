@@ -383,3 +383,11 @@ file_export_version=3.0
 /instance/org.python.pydev/NUMBER_COLOR=255,255,0
 /instance/org.python.pydev/SELF_COLOR=208,208,208
 /instance/org.python.pydev/STRING_COLOR=220,120,220
+
+/instance/org.eclipse.ui.editors/searchHighlightingHighlighting=false
+/instance/org.eclipse.ui.editors/searchHighlightTextStyle=DASHED_BOX
+/instance/org.eclipse.ui.editors/searchHighlightColor=255,128,0
+
+/instance/org.eclipse.ui.editors/matchingTagHighlight=false
+/instance/org.eclipse.ui.editors/matchingTagTextStyle=BOX
+/instance/org.eclipse.ui.editors/matchingTagIndicationColor=255,0,0
