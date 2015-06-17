@@ -391,3 +391,4 @@ file_export_version=3.0
 /instance/org.eclipse.ui.editors/matchingTagHighlight=false
 /instance/org.eclipse.ui.editors/matchingTagTextStyle=BOX
 /instance/org.eclipse.ui.editors/matchingTagIndicationColor=255,0,0
+/instance/okg.eclipse.ui.editors/matchingTagIndication=true
