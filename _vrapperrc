@@ -86,7 +86,7 @@ map U :revertline<ENTER>
 "eclipseaction	revertselection	org.eclipse.ui.editors.quickdiff.revert
 eclipseaction	information		org.eclipse.ui.edit.text.showInformation
 "eclipseaction	properties		org.eclipse.ui.file.properties
-eclipseaction	tycatch			org.eclipse.jdt.ui.edit.text.java.surround.with.try.catch
+eclipseaction	trycatch			org.eclipse.jdt.ui.edit.text.java.surround.with.try.catch
 eclipseaction	rulermenu		org.eclipse.ui.edit.text.showRulerContextMenu
 eclipseaction	perspective		org.eclipse.ui.window.nextPerspective
 eclipseaction	view			org.eclipse.ui.window.previousView
