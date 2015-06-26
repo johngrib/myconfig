@@ -42,6 +42,8 @@ nnoremap <Space>l $
 noremap <Space>j 8j
 noremap <Space>k 8k
 nnoremap gr gT
+nnoremap gl :tablast<Enter>
+nnoremap gf :tabrewind<Enter>
 
 " vrapper 에서 지원하지 않는 [[, ]] 기능을 구현한다.
 "https://github.com/vrapper/vrapper/issues/352
@@ -69,7 +71,7 @@ eclipseaction   organizeimports	org.eclipse.jdt.ui.edit.text.java.organize.impor
 
 " 마지막 편집했던 곳으로 이동한다
 eclipseaction 	lastedit	org.eclipse.ui.edit.text.gotoLastEditPosition
-map <m-q> :lastedited<ENTER>
+nnoremap <m-q> :lastedited<ENTER>
 
 " 편의 기능들 *(주석 달기 귀찮다)
 eclipseaction	rename			org.eclipse.jdt.ui.edit.text.java.rename.element
@@ -82,7 +84,7 @@ eclipseaction	breadcrumb 		org.eclipse.jdt.ui.edit.text.java.gotoBreadcrumb
 eclipseaction	tbreadcrumb 	org.eclipse.jdt.ui.edit.text.java.toggleBreadcrumb
 eclipseaction	outline			org.eclipse.jdt.ui.edit.text.java.show.outline
 eclipseaction	revertline		org.eclipse.ui.editors.quickdiff.revertLine
-map U :revertline<ENTER>
+nnoremap U :revertline<ENTER>
 "eclipseaction	revertselection	org.eclipse.ui.editors.quickdiff.revert
 eclipseaction	information		org.eclipse.ui.edit.text.showInformation
 "eclipseaction	properties		org.eclipse.ui.file.properties
@@ -91,3 +93,8 @@ eclipseaction	rulermenu		org.eclipse.ui.edit.text.showRulerContextMenu
 eclipseaction	perspective		org.eclipse.ui.window.nextPerspective
 eclipseaction	view			org.eclipse.ui.window.previousView
 eclipseaction   search          org.eclipse.search.ui.openFileSearchPage
+
+autocmd "JavaScript Editor" eclipseaction   indent   org.eclipse.wst.jsdt.ui.edit.text.java.indent
+autocmd "Java Editor"       eclipseaction   indent   org.eclipse.jdt.ui.edit.text.java.indent
+nnoremap == :indent<Enter>
+vnoremap == :indent<Enter>
