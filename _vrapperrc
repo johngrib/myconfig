@@ -1,7 +1,7 @@
 "외부 경로를 지정할 때는 다음과 같이 한다.
 "source C:\Users\Administrator.leejr-PC\git\myconfig\_vrapperrc
 
-" gvim 실행 파일 경로. 
+" gvim 실행 파일 경로.
 " 라인 오른쪽에 주석을 달아주면 주석도 옵션으로 평가하므로 주의. 
 "set gvimpath=E:\Program Files (x86)\Vim\vim74\gvim.exe
 "set gvimpath=D:\vim73\gvim.exe
@@ -10,9 +10,9 @@ set smartcase	" 대문자가 검색어 문자열에 포함될 때에는 noignore
 set ignorecase
 set hlsearch
 set incsearch
-set shiftwidth=2	
+set shiftwidth=2
 set expandtab
-set tabstop=4		
+set tabstop=4
 
 set autochdir
 set contentassistmode
@@ -70,11 +70,13 @@ eclipseuiaction doc org.eclipse.ui.edit.text.showInformation
 eclipseaction   organizeimports	org.eclipse.jdt.ui.edit.text.java.organize.imports
 
 " 마지막 편집했던 곳으로 이동한다
-eclipseaction 	lastedit	org.eclipse.ui.edit.text.gotoLastEditPosition
-nnoremap <m-q> :lastedited<ENTER>
+"eclipseaction 	lastedit	org.eclipse.ui.edit.text.gotoLastEditPosition
+"nnoremap <m-q> :lastedited<ENTER>
 
 " 편의 기능들 *(주석 달기 귀찮다)
-eclipseaction	rename			org.eclipse.jdt.ui.edit.text.java.rename.element
+autocmd "Java Editor"           eclipseaction	rename			org.eclipse.jdt.ui.edit.text.java.rename.element
+autocmd "JavaScript Editor"     eclipseaction   rename          org.eclipse.wst.jsdt.ui.edit.text.java.rename.element
+
 eclipseuiaction	fix				org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 eclipseaction	resource		org.eclipse.ui.navigate.openResource
 eclipseaction	getset			org.eclipse.jdt.ui.edit.text.java.create.getter.setter

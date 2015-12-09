@@ -48,8 +48,6 @@ endif
 " ESC 대용
 imap jk <Esc>
 imap kj <Esc>
-imap ㅓㅏ <Esc>
-imap ㅏㅓ <Esc>
 
 " 명령행 한글 입력 오류 처리
 ca ㅈ w
@@ -57,12 +55,76 @@ ca ㅈ w
 " ctrl-j 로 라인을 분리.
 nnoremap <NL> i<CR><ESC>
 
-" window OS 에서 한글 폰트 지정
+" copy , paste , select 기능 보완 -------------------------------
+noremap <Space>y	"+y
+nnoremap <Space>p	"+p
+nnoremap <Space>a	gg<S-v>G
+
+" navigation 기능 보완 ---------------------------------
+nnoremap <Space>h ^
+nnoremap <Space>l $
+noremap <Space>j 8j
+noremap <Space>k 8k
+
 set encoding=utf-8
 set guifont=ubuntu\ mono:h14:cANSI
 set guifontwide=GulimChe:h13:cDEFAULT
 
-" lang mes en_US
+" 메뉴 표시 언어 : 영어
+lang mes en_US
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+
+" for coding on c language
+imap ,fi for(i = 0; i < ; ++i){<ENTER>}
+imap ,fj for(j = 0; j < ; ++j){<ENTER>}
+imap ,if if(){<ENTER>}<ESC>kf(a
+imap ,wh while(){<ENTER>}<ESC>kf(a
+imap ,/ /* */<ESC>2F*a<SPACE>
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+Plugin 'The-NERD-tree'
+nnoremap <F12>n :NERDTreeToggle<ENTER>
