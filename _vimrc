@@ -30,7 +30,10 @@ set ai  " autoindent 자동 들여쓰기
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+"F11, w 로 set list 를 toggle 한다.
+nnoremap <F11>w :set list!<ENTER>
 
 " 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost *
@@ -128,3 +131,5 @@ filetype plugin indent on    " required
 "
 Plugin 'The-NERD-tree'
 nnoremap <F12>n :NERDTreeToggle<ENTER>
+
+Plugin 'jelera/vim-javascript-syntax'
