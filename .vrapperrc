@@ -1,10 +1,5 @@
 "외부 경로를 지정할 때는 다음과 같이 한다.
-"source C:\Users\Administrator.leejr-PC\git\myconfig\_vrapperrc
-
-" gvim 실행 파일 경로.
-" 라인 오른쪽에 주석을 달아주면 주석도 옵션으로 평가하므로 주의. 
-"set gvimpath=E:\Program Files (x86)\Vim\vim74\gvim.exe
-"set gvimpath=D:\vim73\gvim.exe
+"source C:/Users/Administrator.leejr-PC/git/myconfig/_vrapperrc
 
 set smartcase	" 대문자가 검색어 문자열에 포함될 때에는 noignorecase
 set ignorecase
