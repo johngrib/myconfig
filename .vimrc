@@ -52,3 +52,16 @@
 " http://goo.gl/qxOlY
 " https://github.com/ohyecloudy/dotfiles/blob/master/vim/vimrc
 nnoremap <NL> i<CR><ESC>
+
+" copy , paste , select 기능 보완 -------------------------------
+nnoremap Y y$
+noremap <Space>y	"+y
+nnoremap <Space>p	"+p
+nnoremap <Space>a	gg<S-v>G
+
+" navigation 기능 보완 ---------------------------------
+nnoremap <Space>h ^
+nnoremap <Space>l $
+noremap <Space>j 8j
+noremap <Space>k 8k
+nnoremap gr gT
