@@ -1,129 +1,166 @@
 <?xml version="1.0"?>
 <root>
-<!-- Karabiner for MAC private.xml -->
 
-<item>
-    <name>John Grib customized (이종립 개인 설정)</name>
+	<vkchangeinputsourcedef>
+		<name>KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH</name>
+		<inputsourceid_equal>com.apple.keylayout.ABC</inputsourceid_equal>
+	</vkchangeinputsourcedef>
 
-    <!-- 한영/한자 관련 설정 -->
-    <item>
-        <appendix>한영전환/한자 관련 설정</appendix>
-        <appendix>(Command + Control + Option + Space 가 한영 전환으로 설정되어 있어야 한다)</appendix>
-        <!-- Shift + Space 를 한영 전환으로 설정한다. -->
-        <item>
-            <identifier>johngrib.shift_space_to_haneng</identifier>
-            <appendix>Shift + Space 를 한영 전환으로 설정한다.</appendix>
-            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-            <autogen>
-                __KeyToKey__
-                KeyCode::SPACE,
-                MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-                
-                KeyCode::SPACE,
-                ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
-                Option::NOREPEAT
-            </autogen>
-        </item>
-        <!-- Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다. -->
-        <item>
-            <name>Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다.</name>
-            <device_not>
-                DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
-                DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
-            </device_not>
-            <identifier>johngrib.option_r_to_haneng_command_r_to_hanja</identifier>
-            <block>
-                <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::OPTION_R,
-                    
-                    KeyCode::SPACE,
-                    ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
-                    Option::NOREPEAT
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::COMMAND_R,
-                    {{ HANJA_AT_MAC }}
-                </autogen>
-            </block>
-            <block>
-                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}</autogen>
-                <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }}</autogen>
-            </block>
-        </item>
-        <!-- Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다. -->
-        <item>
-            <name>Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다.</name>
-            <device_not>
-                DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
-                DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
-            </device_not>
-            <identifier>johngrib.option_r_to_haneng_control_r_to_hanja</identifier>
-            <block>
-                <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::OPTION_R,
-                    
-                    KeyCode::SPACE,
-                    ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
-                    Option::NOREPEAT
-                </autogen>
-                <autogen>
-                    __KeyToKey__
-                    KeyCode::CONTROL_R,
-                    {{ HANJA_AT_MAC }}
-                </autogen>
-            </block>
-            <block>
-                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}</autogen>
-                <autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}</autogen>
-            </block>
-        </item>
-    </item>
-    <!-- Hyper Key 섹션 -->
-    <item>
-        <!-- Shift + F18 키를 CAPSLOCK 키로 -->
-        <item>
-            <identifier>johngrib.shift_f18_to_capslock</identifier>
-            <appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
-            <autogen>
-                --KeyToKey--
-                KeyCode::F18,
-                ModifierFlag::SHIFT_L,
-                KeyCode::CAPSLOCK,
-            </autogen>
-        </item>
-        <appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음 설정하도록 한다.</appendix>
-        <!-- F18 키를 HYPER 키로 -->
-        <item>
-            <identifier>johngrib.f18_to_hyper</identifier>
-            <appendix>F18 키를 Hyper 로 설정한다.</appendix>
-            <autogen>
-                --KeyOverlaidModifier--
-                KeyCode::F18,
-                KeyCode::COMMAND_L,
-                ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-                KeyCode::F18
-            </autogen>
-        </item>
-        <!-- F19 키를 HYPER 키로 -->
-        <item>
-            <identifier>johngrib.f19_to_hyper</identifier>
-            <appendix>F19 키를 Hyper 로 설정한다.</appendix>
-            <autogen>
-                --KeyOverlaidModifier--
-                KeyCode::F19,
-                KeyCode::COMMAND_L,
-                ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-                KeyCode::F19
-            </autogen>
-        </item>
-    </item>
-</item>
+	<item>
+		<name>John Grib customized (이종립 개인 설정)</name>
+		<item>
+			<appendix>VI 보조 설정</appendix>
+			<item>
+				<appendix>ESC 키를 누를때마다 영문 입력 모드로 전환하기(for VI)</appendix>
+				<identifier>johngrib.esc_to_abc_esc</identifier>
+				<autogen>
+					__KeyToKey__
+					KeyCode::ESCAPE,
+
+					KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
+					KeyCode::ESCAPE,
+				</autogen>
+			</item>
+			<item>
+				<identifier>johngrib.f18_to_abc_esc</identifier>
+				<appendix>F18 키를 영문 입력 모드, ESC 로 설정한다.</appendix>
+				<autogen>
+					__KeyToKey__
+					KeyCode::F18,
+
+					KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
+					KeyCode::ESCAPE,
+				</autogen>
+			</item>
+		</item>
+
+		<!-- 한영/한자 관련 설정 -->
+		<item>
+			<appendix>한영전환/한자 관련 설정</appendix>
+			<appendix>(Command + Control + Option + Space 가 한영 전환으로 설정되어 있어야 한다)
+			</appendix>
+			<!-- Shift + Space 를 한영 전환으로 설정한다. -->
+			<item>
+				<identifier>johngrib.shift_space_to_haneng</identifier>
+				<appendix>Shift + Space 를 한영 전환으로 설정한다.</appendix>
+				<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+				<autogen>
+					__KeyToKey__
+					KeyCode::SPACE,
+					MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+
+					KeyCode::SPACE,
+					ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
+					Option::NOREPEAT
+				</autogen>
+			</item>
+			<!-- Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다. -->
+			<item>
+				<name>Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다.</name>
+				<device_not>
+					DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+					DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+				</device_not>
+				<identifier>johngrib.option_r_to_haneng_command_r_to_hanja
+				</identifier>
+				<block>
+					<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+					<autogen>
+						__KeyToKey__
+						KeyCode::OPTION_R,
+
+						KeyCode::SPACE,
+						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
+						Option::NOREPEAT
+					</autogen>
+					<autogen>
+						__KeyToKey__
+						KeyCode::COMMAND_R,
+						{{ HANJA_AT_MAC }}
+					</autogen>
+				</block>
+				<block>
+					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}
+					</autogen>
+					<autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }}
+					</autogen>
+				</block>
+			</item>
+			<!-- Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다. -->
+			<item>
+				<name>Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다.</name>
+				<device_not>
+					DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+					DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+				</device_not>
+				<identifier>johngrib.option_r_to_haneng_control_r_to_hanja
+				</identifier>
+				<block>
+					<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+					<autogen>
+						__KeyToKey__
+						KeyCode::OPTION_R,
+
+						KeyCode::SPACE,
+						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
+						Option::NOREPEAT
+					</autogen>
+					<autogen>
+						__KeyToKey__
+						KeyCode::CONTROL_R,
+						{{ HANJA_AT_MAC }}
+					</autogen>
+				</block>
+				<block>
+					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}
+					</autogen>
+					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}
+					</autogen>
+				</block>
+			</item>
+		</item>
+		<!-- Hyper Key 섹션 -->
+		<item>
+			<!-- Shift + F18 키를 CAPSLOCK 키로 -->
+			<item>
+				<identifier>johngrib.shift_f18_to_capslock</identifier>
+				<appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
+				<autogen>
+					--KeyToKey--
+					KeyCode::F18,
+					ModifierFlag::SHIFT_L,
+					KeyCode::CAPSLOCK,
+				</autogen>
+			</item>
+			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
+				설정하도록 한다.</appendix>
+			<!-- F18 키를 HYPER 키로 -->
+			<item>
+				<identifier>johngrib.f18_to_hyper</identifier>
+				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
+				<autogen>
+					--KeyOverlaidModifier--
+					KeyCode::F18,
+					KeyCode::COMMAND_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					KeyCode::F18
+				</autogen>
+			</item>
+			<!-- F19 키를 HYPER 키로 -->
+			<item>
+				<identifier>johngrib.f19_to_hyper</identifier>
+				<appendix>F19 키를 Hyper 로 설정한다.</appendix>
+				<autogen>
+					--KeyOverlaidModifier--
+					KeyCode::F19,
+					KeyCode::COMMAND_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					KeyCode::F19
+				</autogen>
+			</item>
+		</item>
+	</item>
 
 </root>
