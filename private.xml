@@ -8,6 +8,46 @@
 
 	<item>
 		<name>John Grib customized (이종립 개인 설정)</name>
+		<!-- Hyper Key 섹션 -->
+		<item>
+			<!-- Shift + F18 키를 CAPSLOCK 키로 -->
+			<item>
+				<identifier>johngrib.shift_f18_to_capslock</identifier>
+				<appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
+				<autogen>
+					--KeyToKey--
+					KeyCode::F18,
+					ModifierFlag::SHIFT_L,
+					KeyCode::CAPSLOCK,
+				</autogen>
+			</item>
+			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
+				설정하도록 한다.</appendix>
+			<!-- F18 키를 HYPER 키로 -->
+			<item>
+				<identifier>johngrib.f18_to_hyper</identifier>
+				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
+				<autogen>
+					--KeyOverlaidModifier--
+					KeyCode::F18,
+					KeyCode::COMMAND_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					KeyCode::F18
+				</autogen>
+			</item>
+			<!-- F19 키를 HYPER 키로 -->
+			<item>
+				<identifier>johngrib.f19_to_hyper</identifier>
+				<appendix>F19 키를 Hyper 로 설정한다.</appendix>
+				<autogen>
+					--KeyOverlaidModifier--
+					KeyCode::F19,
+					KeyCode::COMMAND_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					KeyCode::F19
+				</autogen>
+			</item>
+		</item>
 		<item>
 			<appendix>VI 보조 설정</appendix>
 			<item>
@@ -23,7 +63,7 @@
 			</item>
 			<item>
 				<identifier>johngrib.f18_to_abc_esc</identifier>
-				<appendix>F18 키를 영문 입력 모드, ESC 로 설정한다.</appendix>
+				<appendix>F18 키를 ESC, 영문 입력 모드로 설정한다.</appendix>
 				<autogen>
 					__KeyToKey__
 					KeyCode::F18,
@@ -119,46 +159,6 @@
 					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}
 					</autogen>
 				</block>
-			</item>
-		</item>
-		<!-- Hyper Key 섹션 -->
-		<item>
-			<!-- Shift + F18 키를 CAPSLOCK 키로 -->
-			<item>
-				<identifier>johngrib.shift_f18_to_capslock</identifier>
-				<appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
-				<autogen>
-					--KeyToKey--
-					KeyCode::F18,
-					ModifierFlag::SHIFT_L,
-					KeyCode::CAPSLOCK,
-				</autogen>
-			</item>
-			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
-				설정하도록 한다.</appendix>
-			<!-- F18 키를 HYPER 키로 -->
-			<item>
-				<identifier>johngrib.f18_to_hyper</identifier>
-				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
-				<autogen>
-					--KeyOverlaidModifier--
-					KeyCode::F18,
-					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-					KeyCode::F18
-				</autogen>
-			</item>
-			<!-- F19 키를 HYPER 키로 -->
-			<item>
-				<identifier>johngrib.f19_to_hyper</identifier>
-				<appendix>F19 키를 Hyper 로 설정한다.</appendix>
-				<autogen>
-					--KeyOverlaidModifier--
-					KeyCode::F19,
-					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-					KeyCode::F19
-				</autogen>
 			</item>
 		</item>
 	</item>
