@@ -94,15 +94,14 @@
 					Option::NOREPEAT
 				</autogen>
 			</item>
-			<!-- Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다. -->
+			<!-- Option_R 을 한/영 전환으로 설정한다. -->
 			<item>
-				<name>Option_R 을 한/영 전환으로, Command_R 을 한자 키로 설정한다.</name>
+				<name>Option_R 을 한/영 전환으로 설정한다.</name>
 				<device_not>
 					DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
 					DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
 				</device_not>
-				<identifier>johngrib.option_r_to_haneng_command_r_to_hanja
-				</identifier>
+				<identifier>johngrib.option_r_to_haneng</identifier>
 				<block>
 					<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
 					<autogen>
@@ -113,6 +112,23 @@
 						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
 						Option::NOREPEAT
 					</autogen>
+				</block>
+				<block>
+					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}</autogen>
+				</block>
+			</item>
+			<!-- Command_R 을 한자 키로 설정한다. -->
+			<item>
+				<name>Command_R 을 한자 키로 설정한다.</name>
+				<device_not>
+					DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+					DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+				</device_not>
+				<identifier>johngrib.command_r_to_hanja
+				</identifier>
+				<block>
+					<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
 					<autogen>
 						__KeyToKey__
 						KeyCode::COMMAND_R,
@@ -121,31 +137,19 @@
 				</block>
 				<block>
 					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}
-					</autogen>
-					<autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }}
-					</autogen>
+					<autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }} </autogen>
 				</block>
 			</item>
-			<!-- Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다. -->
+			<!-- Control_R 을 한자 키로 설정한다. -->
 			<item>
-				<name>Option_R 을 한/영 전환으로, Control_R 을 한자 키로 설정한다.</name>
+				<name>Control_R 을 한자 키로 설정한다.</name>
 				<device_not>
 					DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
 					DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
 				</device_not>
-				<identifier>johngrib.option_r_to_haneng_control_r_to_hanja
-				</identifier>
+				<identifier>johngrib.control_r_to_hanja</identifier>
 				<block>
 					<not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-					<autogen>
-						__KeyToKey__
-						KeyCode::OPTION_R,
-
-						KeyCode::SPACE,
-						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
-						Option::NOREPEAT
-					</autogen>
 					<autogen>
 						__KeyToKey__
 						KeyCode::CONTROL_R,
@@ -154,10 +158,7 @@
 				</block>
 				<block>
 					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}
-					</autogen>
-					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}
-					</autogen>
+					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }} </autogen>
 				</block>
 			</item>
 		</item>
