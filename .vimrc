@@ -27,7 +27,7 @@
   set bs=indent,eol,start	" backspace 키 사용 가능
   set shiftwidth=4	" shift를 4칸으로 ( >, >>, <, << 등의 명령어)
   set tabstop=4		" tab을 4칸으로
-  set noimd		" no imdisable 한글 입력기 관련
+  "set noimd		" no imdisable 한글 입력기 관련
   set autoindent	" 자동 들여쓰기
   set smartindent " 자동 들여쓰기 "
   set cindent		" C언어 자동 들여쓰기
@@ -42,8 +42,6 @@
 " ESC 대용
   imap jk <Esc>
   imap kj <Esc>
-  imap ㅓㅏ <Esc>
-  imap ㅏㅓ <Esc>
 
 " 명령행 한글 입력 오류 처리
   ca ㅈ w
