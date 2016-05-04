@@ -10,7 +10,40 @@
 		<name>John Grib customized (이종립 개인 설정)</name>
 		<!-- Hyper Key 섹션 -->
 		<item>
-			<!-- Shift + F18 키를 CAPSLOCK 키로 -->
+			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
+				설정하도록 한다.
+			</appendix>
+
+			<item>
+				<identifier>johngrib.move_mouse_cursor_to_screen_0</identifier>
+				<appendix>Hyper + 0 : 0 번 모니터의 한가운데로 마우스 포인터 이동</appendix>
+				<autogen>
+					__KeyOverlaidModifier__
+					KeyCode::0,
+					ModifierFlag::COMMAND_L |
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
+					ModifierFlag::CONTROL_L,
+
+					@begin
+					KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_0,
+					@end
+				</autogen>
+			</item>
+			<item>
+				<identifier>johngrib.move_mouse_cursor_to_screen_1</identifier>
+				<appendix>Hyper + 1 : 1 번 모니터의 한가운데로 마우스 포인터 이동</appendix>
+				<autogen>
+					__KeyOverlaidModifier__
+					KeyCode::1,
+					ModifierFlag::COMMAND_L |
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
+					ModifierFlag::CONTROL_L,
+
+					@begin
+					KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_1,
+					@end
+				</autogen>
+			</item>
 			<item>
 				<identifier>johngrib.shift_f18_to_capslock</identifier>
 				<appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
@@ -21,9 +54,6 @@
 					KeyCode::CAPSLOCK,
 				</autogen>
 			</item>
-			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
-				설정하도록 한다.</appendix>
-			<!-- F18 키를 HYPER 키로 -->
 			<item>
 				<identifier>johngrib.f18_to_hyper</identifier>
 				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
@@ -31,11 +61,11 @@
 					--KeyOverlaidModifier--
 					KeyCode::F18,
 					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
+					ModifierFlag::CONTROL_L,
 					KeyCode::F18
 				</autogen>
 			</item>
-			<!-- F19 키를 HYPER 키로 -->
 			<item>
 				<identifier>johngrib.f19_to_hyper</identifier>
 				<appendix>F19 키를 Hyper 로 설정한다.</appendix>
@@ -43,7 +73,8 @@
 					--KeyOverlaidModifier--
 					KeyCode::F19,
 					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
+					ModifierFlag::CONTROL_L,
 					KeyCode::F19
 				</autogen>
 			</item>
@@ -90,7 +121,8 @@
 					MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
 
 					KeyCode::SPACE,
-					ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
+					ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L |
+					ModifierFlag::CONTROL_L,
 					Option::NOREPEAT
 				</autogen>
 			</item>
@@ -109,13 +141,15 @@
 						KeyCode::OPTION_R,
 
 						KeyCode::SPACE,
-						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L,
+						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L |
+						ModifierFlag::CONTROL_L,
 						Option::NOREPEAT
 					</autogen>
 				</block>
 				<block>
 					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}</autogen>
+					<autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}
+					</autogen>
 				</block>
 			</item>
 			<!-- Command_R 을 한자 키로 설정한다. -->
@@ -137,7 +171,8 @@
 				</block>
 				<block>
 					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-					<autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }} </autogen>
+					<autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANJA_AT_WIN }}
+					</autogen>
 				</block>
 			</item>
 			<!-- Control_R 을 한자 키로 설정한다. -->
@@ -158,7 +193,8 @@
 				</block>
 				<block>
 					<only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }} </autogen>
+					<autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}
+					</autogen>
 				</block>
 			</item>
 		</item>
