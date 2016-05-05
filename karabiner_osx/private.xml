@@ -8,6 +8,83 @@
 
 	<item>
 		<name>John Grib customized (이종립 개인 설정)</name>
+		<!-- F18 VI 섹션 -->
+		<item>
+			<name>F18 VI Mode</name>
+
+			<item>
+				<appendix>F18 과 HJKL 을 조합하여 방향키로 사용할 수 있다!</appendix>
+				<appendix>Seil 로 Capslock 을 F18 로 변경한 다음 사용하자.</appendix>
+				<appendix>F18 + HJKL</appendix>
+				<identifier>johngrib.f18_vi_mode</identifier>
+				<modifier_not>
+					ModifierFlag::COMMAND_L,
+					ModifierFlag::COMMAND_R,
+					ModifierFlag::CONTROL_L,
+					ModifierFlag::CONTROL_R,
+					ModifierFlag::FN,
+					ModifierFlag::OPTION_L,
+					ModifierFlag::OPTION_R,
+					ModifierFlag::SHIFT_L,
+					ModifierFlag::SHIFT_R,
+				</modifier_not>
+				<autogen>
+					__KeyOverlaidModifier__
+					KeyCode::F18,
+
+					@begin
+					KeyCode::VK_CONFIG_FORCE_ON_notsave_simple_vi_mode,
+					KeyCode::VK_MODIFIER_SIMPLE_VI_MODE_2,
+					@end
+
+					@begin
+					KeyCode::F18,
+					@end
+				</autogen>
+			</item>
+			<item hidden="true">
+				<identifier vk_config="true">johngrib.f18_vi_mode_detail
+				</identifier>
+				<modifier_only>ModifierFlag::SIMPLE_VI_MODE_2</modifier_only>
+				<autogen>
+					__BlockUntilKeyUp__ KeyCode::F18
+				</autogen>
+
+				<autogen>
+					__KeyToKey__
+					KeyCode::H,
+					KeyCode::CURSOR_LEFT,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::SIMPLE_VI_MODE_2,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::J,
+					KeyCode::CURSOR_DOWN,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::SIMPLE_VI_MODE_2,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::K,
+					KeyCode::CURSOR_UP,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::SIMPLE_VI_MODE_2,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::L,
+					KeyCode::CURSOR_RIGHT,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::SIMPLE_VI_MODE_2,
+				</autogen>
+			</item>
+		</item>
+
 		<!-- Hyper Key 섹션 -->
 		<item>
 			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
