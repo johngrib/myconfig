@@ -132,6 +132,21 @@
 				</autogen>
 			</item>
 			<item>
+				<identifier>johngrib.fn_a_to_hyper_a</identifier>
+				<appendix>fn + a 키를 hyper + a 키로 설정한다.</appendix>
+				<autogen>
+					--KeyToKey--
+					KeyCode::A,
+					ModifierFlag::FN,
+
+					KeyCode::A,
+					ModifierFlag::COMMAND_L |
+					ModifierFlag::OPTION_L |
+					ModifierFlag::SHIFT_L |
+					ModifierFlag::CONTROL_L,
+				</autogen>
+			</item>
+			<item>
 				<identifier>johngrib.f18_to_hyper</identifier>
 				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
 				<autogen>
