@@ -20,7 +20,8 @@
 			</autogen>
 			<appendix>F18 + hjkl</appendix>
 			<appendix>F18 + b, e, w, 0, 4($), 6(^)</appendix>
-			<appendix>F18 + x / +x</appendix>
+			<appendix>F18 + g, G</appendix>
+			<appendix>F18 + x, X</appendix>
 			<appendix>F18 + command + f</appendix>
 			<appendix>F18 + command + b</appendix>
 			<block>
@@ -102,7 +103,7 @@
 				<autogen>
 					__KeyToKey__
 					KeyCode::W,
-
+					
 					@begin
 					KeyCode::CURSOR_RIGHT,
 					ModifierFlag::OPTION_L,
@@ -165,6 +166,27 @@
 
 					KeyCode::DELETE,
 					ModifierFlag::FN,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::G,
+					ModifierFlag::SHIFT_L,
+
+					KeyCode::CURSOR_DOWN,
+					ModifierFlag::COMMAND_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::G,
+
+					KeyCode::CURSOR_UP,
+					ModifierFlag::COMMAND_L,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
 					ModifierFlag::EXTRA1,
