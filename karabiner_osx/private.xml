@@ -10,53 +10,52 @@
 		<name>John Grib customized (이종립 개인 설정)</name>
 		<!-- F18 VI 섹션 -->
 		<item>
-			<name>F18 VI Mode</name>
-
-			<item>
-				<appendix>F18 과 HJKL 을 조합하여 방향키로 사용할 수 있다!</appendix>
-				<appendix>Seil 로 Capslock 을 F18 로 변경한 다음 사용하자.</appendix>
-				<appendix>F18 + HJKL</appendix>
-				<identifier>johngrib.f18_vi_mode</identifier>
-				<modifier_not>
+			<identifier>johngrib.f18_vi_keymap</identifier>
+			<name>F18 키와 함께 조합하면 VI 처럼 작동</name>
+			<autogen>
+				__KeyOverlaidModifier__
+				KeyCode::F18,
+				KeyCode::VK_MODIFIER_EXTRA1,
+				KeyCode::F18,
+			</autogen>
+			<appendix>F18 + hjkl</appendix>
+			<appendix>F18 + b, e, w, 0, 4($), 6(^)</appendix>
+			<appendix>F18 + x / +x</appendix>
+			<appendix>F18 + command + f</appendix>
+			<appendix>F18 + command + b</appendix>
+			<block>
+				<modifier_only>ModifierFlag::EXTRA1</modifier_only>
+				<!-- command 키 조합 -->
+				<autogen>
+					__KeyToKey__
+					KeyCode::F,
 					ModifierFlag::COMMAND_L,
-					ModifierFlag::COMMAND_R,
-					ModifierFlag::CONTROL_L,
-					ModifierFlag::CONTROL_R,
-					ModifierFlag::FN,
+
+					KeyCode::PAGEDOWN,
 					ModifierFlag::OPTION_L,
-					ModifierFlag::OPTION_R,
-					ModifierFlag::SHIFT_L,
-					ModifierFlag::SHIFT_R,
-				</modifier_not>
-				<autogen>
-					__KeyOverlaidModifier__
-					KeyCode::F18,
 
-					@begin
-					KeyCode::VK_CONFIG_FORCE_ON_notsave_simple_vi_mode,
-					KeyCode::VK_MODIFIER_SIMPLE_VI_MODE_2,
-					@end
-
-					@begin
-					KeyCode::F18,
-					@end
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
 				</autogen>
-			</item>
-			<item hidden="true">
-				<identifier vk_config="true">johngrib.f18_vi_mode_detail
-				</identifier>
-				<modifier_only>ModifierFlag::SIMPLE_VI_MODE_2</modifier_only>
 				<autogen>
-					__BlockUntilKeyUp__ KeyCode::F18
-				</autogen>
+					__KeyToKey__
+					KeyCode::B,
+					ModifierFlag::COMMAND_L,
 
+					KeyCode::PAGEUP,
+					ModifierFlag::OPTION_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<!-- 단일 입력 -->
 				<autogen>
 					__KeyToKey__
 					KeyCode::H,
 					KeyCode::CURSOR_LEFT,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::SIMPLE_VI_MODE_2,
+					ModifierFlag::EXTRA1,
 				</autogen>
 				<autogen>
 					__KeyToKey__
@@ -64,7 +63,7 @@
 					KeyCode::CURSOR_DOWN,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::SIMPLE_VI_MODE_2,
+					ModifierFlag::EXTRA1,
 				</autogen>
 				<autogen>
 					__KeyToKey__
@@ -72,7 +71,7 @@
 					KeyCode::CURSOR_UP,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::SIMPLE_VI_MODE_2,
+					ModifierFlag::EXTRA1,
 				</autogen>
 				<autogen>
 					__KeyToKey__
@@ -80,11 +79,98 @@
 					KeyCode::CURSOR_RIGHT,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::SIMPLE_VI_MODE_2,
+					ModifierFlag::EXTRA1,
 				</autogen>
-			</item>
-		</item>
+				<autogen>
+					__KeyToKey__
+					KeyCode::B,
+					KeyCode::CURSOR_LEFT,
+					ModifierFlag::OPTION_L,
 
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::E,
+					KeyCode::CURSOR_RIGHT,
+					ModifierFlag::OPTION_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::W,
+
+					@begin
+					KeyCode::CURSOR_RIGHT,
+					ModifierFlag::OPTION_L,
+					KeyCode::CURSOR_RIGHT,
+					ModifierFlag::OPTION_L,
+					KeyCode::CURSOR_LEFT,
+					ModifierFlag::OPTION_L,
+					@end
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::0,
+					KeyCode::CURSOR_LEFT,
+					ModifierFlag::COMMAND_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::4,
+					KeyCode::CURSOR_RIGHT,
+					ModifierFlag::COMMAND_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::6,
+
+					@begin
+					KeyCode::CURSOR_LEFT,
+					ModifierFlag::COMMAND_L,
+					KeyCode::CURSOR_RIGHT,
+					ModifierFlag::OPTION_L,
+					KeyCode::CURSOR_LEFT,
+					ModifierFlag::OPTION_L,
+					@end
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::X,
+					ModifierFlag::SHIFT_L,
+
+					KeyCode::DELETE,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::X,
+
+					KeyCode::DELETE,
+					ModifierFlag::FN,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+			</block>
+		</item>
 		<!-- Hyper Key 섹션 -->
 		<item>
 			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
@@ -129,21 +215,6 @@
 					KeyCode::F18,
 					ModifierFlag::SHIFT_L,
 					KeyCode::CAPSLOCK,
-				</autogen>
-			</item>
-			<item>
-				<identifier>johngrib.fn_a_to_hyper_a</identifier>
-				<appendix>fn + a 키를 hyper + a 키로 설정한다.</appendix>
-				<autogen>
-					--KeyToKey--
-					KeyCode::A,
-					ModifierFlag::FN,
-
-					KeyCode::A,
-					ModifierFlag::COMMAND_L |
-					ModifierFlag::OPTION_L |
-					ModifierFlag::SHIFT_L |
-					ModifierFlag::CONTROL_L,
 				</autogen>
 			</item>
 			<item>
