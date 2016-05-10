@@ -8,6 +8,28 @@
 
 	<item>
 		<name>John Grib customized (이종립 개인 설정)</name>
+		<item>
+			<name>VI, IntelliJ IDEA 에서는 command_l 키를 control_l 키로 한다.</name>
+			<appendix>단, command + tab 은 작동하게 한다.</appendix>
+			<identifier>johngrib.command_l_to_control_l_only_intellij_idea
+			</identifier>
+			<block>
+				<only>IntelliJ,VI</only>
+				<autogen>
+					__KeyToKey__
+					KeyCode::COMMAND_L,
+					KeyCode::CONTROL_L,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::TAB,
+					ModifierFlag::CONTROL_L,
+
+					KeyCode::TAB,
+					ModifierFlag::COMMAND_L,
+				</autogen>
+			</block>
+		</item>
 		<!-- F18 VI 섹션 -->
 		<item>
 			<identifier>johngrib.f18_vi_keymap</identifier>
