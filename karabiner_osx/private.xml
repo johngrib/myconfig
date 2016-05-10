@@ -18,6 +18,12 @@
 				KeyCode::VK_MODIFIER_EXTRA1,
 				KeyCode::F18,
 			</autogen>
+			<autogen>
+				__KeyOverlaidModifier__
+				KeyCode::COMMAND_R,
+				KeyCode::VK_MODIFIER_EXTRA1,
+				KeyCode::F18,
+			</autogen>
 			<appendix>F18 + hjkl</appendix>
 			<appendix>F18 + b, e, w, 0, 4($), 6(^)</appendix>
 			<appendix>F18 + g, G</appendix>
@@ -103,7 +109,7 @@
 				<autogen>
 					__KeyToKey__
 					KeyCode::W,
-					
+
 					@begin
 					KeyCode::CURSOR_RIGHT,
 					ModifierFlag::OPTION_L,
@@ -198,7 +204,6 @@
 			<appendix>Seil 을 사용해서 CAPSLOCK 을 F18 로, ContextMenu 를 F19 로 매핑한 다음
 				설정하도록 한다.
 			</appendix>
-
 			<item>
 				<identifier>johngrib.move_mouse_cursor_to_screen_0</identifier>
 				<appendix>Hyper + 0 : 0 번 모니터의 한가운데로 마우스 포인터 이동</appendix>
