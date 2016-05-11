@@ -28,6 +28,13 @@
 					KeyCode::TAB,
 					ModifierFlag::COMMAND_L,
 				</autogen>
+				<!--
+				<autogen>
+					__KeyToKey__
+					KeyCode::COMMAND_R,
+					KeyCode::COMMAND_R,
+				</autogen>
+				-->
 			</block>
 		</item>
 		<!-- F18 VI 섹션 -->
@@ -47,7 +54,7 @@
 				KeyCode::F18,
 			</autogen>
 			<appendix>F18 + hjkl</appendix>
-			<appendix>F18 + b, e, w, 0, 4($), 6(^)</appendix>
+			<appendix>F18 + b, 0, 4($), 6(^)</appendix>
 			<appendix>F18 + g, G</appendix>
 			<appendix>F18 + x, X</appendix>
 			<appendix>F18 + command + f</appendix>
@@ -119,6 +126,7 @@
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
 					ModifierFlag::EXTRA1,
 				</autogen>
+				<!--
 				<autogen>
 					__KeyToKey__
 					KeyCode::E,
@@ -128,22 +136,8 @@
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
 					ModifierFlag::EXTRA1,
 				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::W,
-
-					@begin
-					KeyCode::CURSOR_RIGHT,
-					ModifierFlag::OPTION_L,
-					KeyCode::CURSOR_RIGHT,
-					ModifierFlag::OPTION_L,
-					KeyCode::CURSOR_LEFT,
-					ModifierFlag::OPTION_L,
-					@end
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
+				-->
+				<!-- 0, $, ^, x, X, g, G -->
 				<autogen>
 					__KeyToKey__
 					KeyCode::0,
@@ -215,6 +209,72 @@
 
 					KeyCode::CURSOR_UP,
 					ModifierFlag::COMMAND_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<!-- mouse control -->
+				<autogen>
+					__KeyToKey__
+					KeyCode::W,
+					KeyCode::VK_MOUSEKEY_UP,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::A,
+					KeyCode::VK_MOUSEKEY_LEFT,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::S,
+					KeyCode::VK_MOUSEKEY_DOWN,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::D,
+					KeyCode::VK_MOUSEKEY_RIGHT,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+      			<autogen>
+					__KeyToKey__ 
+					KeyCode::Q, 
+					PointingButton::LEFT,   
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+      			<autogen>
+					__KeyToKey__ 
+					KeyCode::E, 
+					PointingButton::RIGHT,   
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+
+      			<autogen>
+					__KeyToKey__ 
+					KeyCode::R, 
+ 					KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+      			<autogen>
+					__KeyToKey__ 
+					KeyCode::F, 
+ 					KeyCode::VK_MOUSEKEY_SCROLL_UP,
 
 					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
 					ModifierFlag::EXTRA1,
