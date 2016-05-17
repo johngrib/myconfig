@@ -3,6 +3,7 @@
   set ignorecase 	" 검색시 대소문자 무시
   set hlsearch	" 검색시 하이라이트(색상 강조)
   set incsearch	" 검색 키워드 입력시 한 글자 입력할 때마다 점진 검색
+  "set tildeop  "~ 를 다른 오퍼레이터와 함께 사용한다.
 
 "화면 표시
   set nu 		" 라인 넘버 출력
