@@ -59,8 +59,32 @@
 			<appendix>F18 + x, X</appendix>
 			<appendix>F18 + command + f</appendix>
 			<appendix>F18 + command + b</appendix>
+			<appendix>F18 + ' (dock open/close)</appendix>
+			<appendix>F18 + ; (open alfred)</appendix>
 			<block>
 				<modifier_only>ModifierFlag::EXTRA1</modifier_only>
+				<autogen>
+					__KeyToKey__
+					KeyCode::SEMICOLON,
+
+					@begin
+					KeyCode::OPTION_L,
+					KeyCode::OPTION_L,
+					@end
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
+				<autogen>
+					__KeyToKey__
+					KeyCode::QUOTE,
+
+					KeyCode::F3,
+					ModifierFlag::CONTROL_L,
+
+					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+					ModifierFlag::EXTRA1,
+				</autogen>
 				<!-- command 키 조합 -->
 				<autogen>
 					__KeyToKey__
