@@ -6,6 +6,35 @@
 		<inputsourceid_equal>com.apple.keylayout.ABC</inputsourceid_equal>
 	</vkchangeinputsourcedef>
 
+	<replacementdef>
+		<replacementname>MOD_EXT</replacementname>
+		<replacementvalue> <![CDATA[ Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS, ModifierFlag::EXTRA1, ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>MOD</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>CTRL</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag::CONTROL_L ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>CMD</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag::COMMAND_L ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>ALT</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag::OPTION_L ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>SHIFT</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag::SHIFT_L ]]> </replacementvalue>
+	</replacementdef>
+	<replacementdef>
+		<replacementname>FN</replacementname>
+		<replacementvalue> <![CDATA[ ModifierFlag::FN ]]> </replacementvalue>
+	</replacementdef>
+
 	<item>
 		<name>John Grib customized (이종립 개인 설정)</name>
 		<item>
@@ -16,17 +45,14 @@
 			<block>
 				<only>IntelliJ,VI</only>
 				<autogen>
-					__KeyToKey__
-					KeyCode::COMMAND_L,
+					__KeyToKey__ 
+					KeyCode::COMMAND_L, 
 					KeyCode::CONTROL_L,
 				</autogen>
 				<autogen>
 					__KeyToKey__
-					KeyCode::TAB,
-					ModifierFlag::CONTROL_L,
-
-					KeyCode::TAB,
-					ModifierFlag::COMMAND_L,
+					KeyCode::TAB, {{CTRL}}, 
+					KeyCode::TAB, {{CMD}},
 				</autogen>
 				<!--
 				<autogen>
@@ -47,6 +73,7 @@
 				KeyCode::VK_MODIFIER_EXTRA1,
 				KeyCode::F18,
 			</autogen>
+			<!-- COMMAND_R 을 F18 로 사용한다. -->
 			<autogen>
 				__KeyOverlaidModifier__
 				KeyCode::COMMAND_R,
@@ -60,249 +87,65 @@
 			<appendix>F18 + command + f</appendix>
 			<appendix>F18 + command + b</appendix>
 			<appendix>F18 + ' (dock open/close)</appendix>
-			<appendix>F18 + ; (open alfred)</appendix>
 			<block>
 				<modifier_only>ModifierFlag::EXTRA1</modifier_only>
-				<autogen>
-					__KeyToKey__
-					KeyCode::SEMICOLON,
-
-					@begin
-					KeyCode::OPTION_L,
-					KeyCode::OPTION_L,
-					@end
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::QUOTE,
-
-					KeyCode::F3,
-					ModifierFlag::CONTROL_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<!-- command 키 조합 -->
-				<autogen>
-					__KeyToKey__
-					KeyCode::F,
-					ModifierFlag::COMMAND_L,
-
-					KeyCode::PAGEDOWN,
-					ModifierFlag::OPTION_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::B,
-					ModifierFlag::COMMAND_L,
-
-					KeyCode::PAGEUP,
-					ModifierFlag::OPTION_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<!-- 단일 입력 -->
-				<autogen>
-					__KeyToKey__
-					KeyCode::H,
-					KeyCode::CURSOR_LEFT,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::J,
-					KeyCode::CURSOR_DOWN,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::K,
-					KeyCode::CURSOR_UP,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::L,
-					KeyCode::CURSOR_RIGHT,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::B,
-					KeyCode::CURSOR_LEFT,
-					ModifierFlag::OPTION_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<!--
-				<autogen>
-					__KeyToKey__
-					KeyCode::E,
-					KeyCode::CURSOR_RIGHT,
-					ModifierFlag::OPTION_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				-->
-				<!-- 0, $, ^, x, X, g, G -->
-				<autogen>
-					__KeyToKey__
-					KeyCode::0,
-					KeyCode::CURSOR_LEFT,
-					ModifierFlag::COMMAND_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::4,
-					KeyCode::CURSOR_RIGHT,
-					ModifierFlag::COMMAND_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
+				<!-- dock 호출 -->
+				<autogen> __KeyToKey__ KeyCode::QUOTE, KeyCode::F3, {{CTRL}}, {{MOD_EXT}} </autogen>
+				<!-- cmd + f : pgdn / cmd + b : pgup -->
+				<autogen> __KeyToKey__ KeyCode::F, {{CMD}}, KeyCode::PAGEDOWN, {{ALT}}, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::B, {{CMD}}, KeyCode::PAGEUP, {{ALT}}, {{MOD_EXT}} </autogen>
+				<!-- hjkl -->
+				<autogen> __KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP,   {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT,{{MOD_EXT}} </autogen>
+				<!-- X, x, G, g -->
+				<autogen> __KeyToKey__ KeyCode::X, {{SHIFT}}, KeyCode::DELETE, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::X, KeyCode::DELETE, {{FN}}, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::G, {{SHIFT}}, KeyCode::CURSOR_DOWN, {{CMD}}, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::G, KeyCode::CURSOR_UP, {{CMD}}, {{MOD_EXT}} </autogen>
+				<!-- mouse control -->
+				<autogen> __KeyToKey__ KeyCode::W, KeyCode::VK_MOUSEKEY_UP, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT, {{MOD_EXT}} </autogen>
+      			<autogen> __KeyToKey__ KeyCode::Q, PointingButton::LEFT, {{MOD_EXT}} </autogen>
+      			<autogen> __KeyToKey__ KeyCode::E, PointingButton::RIGHT, {{MOD_EXT}} </autogen>
+      			<autogen> __KeyToKey__ KeyCode::R, KeyCode::VK_MOUSEKEY_SCROLL_DOWN, {{MOD_EXT}} </autogen>
+      			<autogen> __KeyToKey__ KeyCode::F, KeyCode::VK_MOUSEKEY_SCROLL_UP, {{MOD_EXT}} </autogen>
+				<!-- b 0 4($) 6(^)-->
+				<autogen> __KeyToKey__ KeyCode::B, KeyCode::CURSOR_LEFT, {{ALT}}, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::0, KeyCode::CURSOR_LEFT, {{CMD}}, {{MOD_EXT}} </autogen>
+				<autogen> __KeyToKey__ KeyCode::4, KeyCode::CURSOR_RIGHT, {{CMD}}, {{MOD_EXT}} </autogen>
 				<autogen>
 					__KeyToKey__
 					KeyCode::6,
-
 					@begin
-					KeyCode::CURSOR_LEFT,
-					ModifierFlag::COMMAND_L,
-					KeyCode::CURSOR_RIGHT,
-					ModifierFlag::OPTION_L,
-					KeyCode::CURSOR_LEFT,
-					ModifierFlag::OPTION_L,
+						KeyCode::CURSOR_LEFT, {{CMD}},
+						KeyCode::CURSOR_RIGHT,{{ALT}},
+						KeyCode::CURSOR_LEFT, {{ALT}},
 					@end
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
+					{{MOD_EXT}}
+				</autogen>
+				<!-- 마우스 포인터를 1,2 번 모니터로 -->
+				<autogen>
+					__KeyToKey__
+					KeyCode::1,
+					@begin
+						KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_0,
+					@end
+					{{MOD_EXT}}
 				</autogen>
 				<autogen>
 					__KeyToKey__
-					KeyCode::X,
-					ModifierFlag::SHIFT_L,
-
-					KeyCode::DELETE,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
+					KeyCode::2,
+					@begin
+						KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_1,
+					@end
+					{{MOD_EXT}}
 				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::X,
-
-					KeyCode::DELETE,
-					ModifierFlag::FN,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::G,
-					ModifierFlag::SHIFT_L,
-
-					KeyCode::CURSOR_DOWN,
-					ModifierFlag::COMMAND_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::G,
-
-					KeyCode::CURSOR_UP,
-					ModifierFlag::COMMAND_L,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<!-- mouse control -->
-				<autogen>
-					__KeyToKey__
-					KeyCode::W,
-					KeyCode::VK_MOUSEKEY_UP,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::A,
-					KeyCode::VK_MOUSEKEY_LEFT,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::S,
-					KeyCode::VK_MOUSEKEY_DOWN,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-				<autogen>
-					__KeyToKey__
-					KeyCode::D,
-					KeyCode::VK_MOUSEKEY_RIGHT,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-      			<autogen>
-					__KeyToKey__ 
-					KeyCode::Q, 
-					PointingButton::LEFT,   
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-      			<autogen>
-					__KeyToKey__ 
-					KeyCode::E, 
-					PointingButton::RIGHT,   
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-
-      			<autogen>
-					__KeyToKey__ 
-					KeyCode::R, 
- 					KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
-      			<autogen>
-					__KeyToKey__ 
-					KeyCode::F, 
- 					KeyCode::VK_MOUSEKEY_SCROLL_UP,
-
-					Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
-					ModifierFlag::EXTRA1,
-				</autogen>
+				<!-- CAPSLOCK -->
+				<autogen> __KeyToKey__ KeyCode::U, KeyCode::CAPSLOCK, {{MOD_EXT}} </autogen>
 			</block>
 		</item>
 		<!-- Hyper Key 섹션 -->
@@ -311,54 +154,12 @@
 				설정하도록 한다.
 			</appendix>
 			<item>
-				<identifier>johngrib.move_mouse_cursor_to_screen_0</identifier>
-				<appendix>Hyper + 0 : 0 번 모니터의 한가운데로 마우스 포인터 이동</appendix>
-				<autogen>
-					__KeyOverlaidModifier__
-					KeyCode::0,
-					ModifierFlag::COMMAND_L |
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
-					ModifierFlag::CONTROL_L,
-
-					@begin
-					KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_0,
-					@end
-				</autogen>
-			</item>
-			<item>
-				<identifier>johngrib.move_mouse_cursor_to_screen_1</identifier>
-				<appendix>Hyper + 1 : 1 번 모니터의 한가운데로 마우스 포인터 이동</appendix>
-				<autogen>
-					__KeyOverlaidModifier__
-					KeyCode::1,
-					ModifierFlag::COMMAND_L |
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
-					ModifierFlag::CONTROL_L,
-
-					@begin
-					KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_1,
-					@end
-				</autogen>
-			</item>
-			<item>
-				<identifier>johngrib.shift_f18_to_capslock</identifier>
-				<appendix>Shift + F18 키를 Capslock 으로 설정한다.</appendix>
-				<autogen>
-					--KeyToKey--
-					KeyCode::F18,
-					ModifierFlag::SHIFT_L,
-					KeyCode::CAPSLOCK,
-				</autogen>
-			</item>
-			<item>
 				<identifier>johngrib.f18_to_hyper</identifier>
 				<appendix>F18 키를 Hyper 로 설정한다.</appendix>
 				<autogen>
 					--KeyOverlaidModifier--
 					KeyCode::F18,
-					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
-					ModifierFlag::CONTROL_L,
+					KeyCode::COMMAND_L, {{ALT}} | {{SHIFT}} | {{CTRL}},
 					KeyCode::F18
 				</autogen>
 			</item>
@@ -368,9 +169,7 @@
 				<autogen>
 					--KeyOverlaidModifier--
 					KeyCode::F19,
-					KeyCode::COMMAND_L,
-					ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L |
-					ModifierFlag::CONTROL_L,
+					KeyCode::COMMAND_L, {{ALT}} | {{SHIFT}} | {{CTRL}},
 					KeyCode::F19
 				</autogen>
 			</item>
@@ -383,7 +182,6 @@
 				<autogen>
 					__KeyToKey__
 					KeyCode::ESCAPE,
-
 					KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
 					KeyCode::ESCAPE,
 				</autogen>
@@ -394,7 +192,6 @@
 				<autogen>
 					__KeyToKey__
 					KeyCode::F18,
-
 					KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
 					KeyCode::ESCAPE,
 				</autogen>
@@ -416,9 +213,7 @@
 					KeyCode::SPACE,
 					MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
 
-					KeyCode::SPACE,
-					ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L |
-					ModifierFlag::CONTROL_L,
+					KeyCode::SPACE, {{CMD}} | {{ALT}} | {{CTRL}},
 					Option::NOREPEAT
 				</autogen>
 			</item>
@@ -436,9 +231,7 @@
 						__KeyToKey__
 						KeyCode::OPTION_R,
 
-						KeyCode::SPACE,
-						ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L |
-						ModifierFlag::CONTROL_L,
+						KeyCode::SPACE, {{CMD}} | {{ALT}} | {{CTRL}},
 						Option::NOREPEAT
 					</autogen>
 				</block>
