@@ -15,8 +15,8 @@ fi
 
 alias l.='ls -d .* --color=auto'
 alias ll='ls -al'
-alias vi=mvim
-alias vim=mvim
+alias vi=vim
+#alias vim=mvim
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
