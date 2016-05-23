@@ -54,6 +54,24 @@
         <autogen> __KeyToKey__ KeyCode::TAB, {{CTRL}}, KeyCode::TAB, {{CMD}}, </autogen>
       </block>
     </item>
+    <item>
+      <appendix>` 를 ESC 와 swap 한다.</appendix>
+      <identifier>johngrib.backquote_esc_swap</identifier>
+      <block>
+        <autogen>
+          __KeyToKey__ 
+          KeyCode::BACKQUOTE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
+          KeyCode::ESCAPE, 
+        </autogen>
+        <autogen> 
+          __KeyToKey__ 
+          KeyCode::ESCAPE, 
+          KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
+          KeyCode::BACKQUOTE, 
+        </autogen>
+      </block>
+    </item>
     <!-- F19 VI 섹션 -->
     <item>
       <identifier>johngrib.f18_vi_keymap</identifier>
