@@ -1,24 +1,43 @@
-"검색
+" Vundle 설정 ---------------------------------------------------
+" 아래와 같이 설정한 다음 :PluginInstall<CR> 해주면 된다.
+set nocompatible 
+filetype off 
+set rtp+=~/.vim/bundle/Vundle.vim 
+call vundle#begin() 
+    Plugin 'gmarik/Vundle.vim' "required
+    Plugin 'tpope/vim-fugitive' "required 
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'dracula/vim'
+    Plugin 'vim-airline/vim-airline'
+call vundle#end()            
+filetype plugin indent on " Put your non-Plugin stuff after this line
+
+"검색 --------------------------------------------------------------
   set smartcase   " 대문자가 검색어 문자열에 포함될 때에는 noignorecase
-  set ignorecase 	" 검색시 대소문자 무시
-  set hlsearch	" 검색시 하이라이트(색상 강조)
-  set incsearch	" 검색 키워드 입력시 한 글자 입력할 때마다 점진 검색
-  "set tildeop  "~ 를 다른 오퍼레이터와 함께 사용한다.
+  set ignorecase  " 검색시 대소문자 무시
+  set hlsearch    " 검색시 하이라이트(색상 강조)
+  set incsearch   " 검색 키워드 입력시 한 글자 입력할 때마다 점진 검색
+  "set tildeop    "~ 를 다른 오퍼레이터와 함께 사용한다.
+  set wildmenu    " command line 에서 tab 으로 자동완성이 가능. :e 로 파일 이름을 찾을 때 편함.
 
 "화면 표시
-  set nu 		" 라인 넘버 출력
-  set ruler	" 현재 커서 위치 (row, col) 좌표 출력
-  set noerrorbells	" 에러 알림음 끄기
+  set nu               " 라인 넘버 출력
+  set ruler            " 현재 커서 위치 (row, col) 좌표 출력
+  set noerrorbells     " 에러 알림음 끄기
   set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라짐.)
-  set laststatus=2	" 상태바를 언제나 표시할 것
-  set showmatch " 일치하는 괄호 하이라이팅
+  set laststatus=2     " 상태바를 언제나 표시할 것
+  set showmatch        " 일치하는 괄호 하이라이팅
+  set cursorline       " highlight current line
+  set lazyredraw       " redraw only when we need to.
+  nnoremap gq `[v`]    " highlight last inserted text
   
   " 사운드 벨, 비주얼 벨 비활성화
   set noerrorbells visualbell t_vb=
   autocmd GUIEnter * set visualbell t_vb=
 
   " syntax on
-  colorscheme desert
+  "colorscheme desert
+  colorscheme dracula
   if has("syntax")
    syntax on
   endif
@@ -59,8 +78,16 @@ nnoremap <Space>p	"+p
 nnoremap <Space>a	gg<S-v>G
 
 " navigation 기능 보완 ---------------------------------
-nnoremap <Space>h ^
-nnoremap <Space>l $
-noremap <Space>j 8j
-noremap <Space>k 8k
 nnoremap gr gT
+
+nnoremap gn :call ToggleNumber()<cr>
+
+" toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
