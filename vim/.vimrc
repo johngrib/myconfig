@@ -4,25 +4,43 @@ set nocompatible
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin() 
+  Plugin 'gmarik/Vundle.vim'  "required
+  Plugin 'tpope/vim-fugitive' "required 
+  Plugin 'kien/ctrlp.vim'     "파일 이름 검색 open
+  Plugin 'shougo/vimproc.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'jistr/vim-nerdtree-tabs'
-  Plugin 'gmarik/Vundle.vim' "required
-  Plugin 'tpope/vim-fugitive' "required 
   Plugin 'nathanaelkane/vim-indent-guides'
-  "Plugin 'dracula/vim'
-  Plugin 'flazz/vim-colorschemes'
-  "Plugin 'scrooloose/syntastic' " 이걸 설치하면 :E 가 작동하지 않는다.
+  Plugin 'scrooloose/syntastic' " 파일을 저장할 때 자동으로 문법 검사
   Plugin 'tpope/vim-surround'
-  Plugin 'kien/ctrlp.vim'
   "Plugin 'rking/ag.vim'
   Plugin 'yggdroot/indentline'
   Plugin 'bling/vim-airline'
+  Plugin 'luochen1990/rainbow'   " 괄호 색깔을 다양하게 
+  Plugin 'kshenoy/vim-signature' " mark 위치를 표시해준다.
+  Plugin 'airblade/vim-gitgutter' " git diff 표시
+  Plugin 'rking/ag.vim'
+  "Plugin 'taglist.vim'
+  Plugin 'matze/vim-move'         " <M-J>, <M-K> 로 선택한 라인을 위아래로 이동
+  Plugin 'easymotion/vim-easymotion'
+  Plugin 'johngrib/FlatColor-johngrib'
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
 " set 설정 ----------------------------------------------------------------------
 
   set nocp       " vi 기능을 사용하지 않고, vim 만의 기능을 사용.
+
+  if has('mac')
+    set macmeta    " osx 에서 Meta 키 조합을 사용할 수 있게 한다.
+    "set guifont=Ubuntu\ Mono:h13
+    "set guifont=monaco:h12
+    "set guifont=inconsolata:h13
+    "set guifont=DejaVu\ Sans\ Mono:h12
+    "set guifont=Fira\ Mono:h13
+    "set guifont=Meslo\ LG\ L\ DZ:h11
+    set guifont=Meslo\ LG\ M\ DZ:h11
+  endif
 
   " 검색
   set smartcase   " 대문자가 검색어 문자열에 포함될 때에는 noignorecase
@@ -42,7 +60,7 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   set showmatch        " 일치하는 괄호 하이라이팅
   set cursorline       " highlight current line
   set lazyredraw       " redraw only when we need to.
-  nnoremap gq `[v`]    " highlight last inserted text
+  nnoremap gv `[v`]    " highlight last inserted text
   
   " 사운드 벨, 비주얼 벨 비활성화
   set noerrorbells visualbell t_vb=
@@ -52,6 +70,7 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   set bs=indent,eol,start  " backspace 키 사용 가능
   set shiftwidth=4         " shift를 4칸으로 ( >, >>, <, << )
   set tabstop=4            " tab을 4칸으로
+  set expandtab 
   "set noimd               " no imdisable 한글 입력기 관련.. 인데 osx 에서는 안 통하는듯 
   set cindent              " C언어 자동 들여쓰기
   set autoindent           " 자동 들여쓰기
@@ -66,7 +85,14 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   \ exe "norm g`\"" |
   \ endif
 
-  colorscheme onedark 
+
+  "colorscheme onedark 
+  "colorscheme evolution
+  "colorscheme dusk 
+  "colorscheme eva01
+  "colorscheme greywh
+  "colorscheme freya
+  colorscheme flatcolor-johngrib
 
   syntax on
   "if has("syntax")
@@ -82,18 +108,32 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
 
   " copy , paste , select 기능 보완
   nnoremap Y y$
-  noremap <Space>y  "+y
+  nnoremap <Space>y "+y
   nnoremap <Space>p "+p
   nnoremap <Space>a gg<S-v>G
 
-  nnoremap gn :call ToggleNumber()<cr>
-  nnoremap <F3> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
-  nnoremap <C-S-R> :CtrlP<CR>
+  nnoremap gn       :call ToggleNumber()<cr>
+  nnoremap <F3>     :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+  nnoremap <Space>r :CtrlP<CR>
   
   " NERDTree 관련
   nnoremap <F12>n :NERDTreeToggle<CR>
   nnoremap <F12>m :NERDTreeMirrorToggle<CR>
   nnoremap <F12>s :NERDTreeTabsFind<CR>
+
+  " rainbow
+  nnoremap <F12>r :RainbowToggle<CR>
+
+  " easy motion
+  "map <Leader> <Plug>(easymotion-prefix)
+  map <Space>l <Plug>(easymotion-lineforward)
+  map <Space>j <Plug>(easymotion-j)
+  map <Space>k <Plug>(easymotion-k)
+  map <Space>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+
 
 " 버퍼 관련 ------------------------------------------------------------------------
 " @link http://bakyeono.net/post/2015-08-13-vim-tab-madness-translate.html
@@ -109,6 +149,8 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   nnoremap gq :bp <BAR> bd #<CR> " 현재 버퍼를 닫고 이전 버퍼로 이동
 
 " etc -------------------------------------------------------------------------
+
+  let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 " functions -------------------------------------------------------------------
 
