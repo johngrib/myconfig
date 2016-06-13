@@ -4,36 +4,36 @@ set nocompatible
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin() 
-  Plugin 'gmarik/Vundle.vim'  "required
-  Plugin 'tpope/vim-fugitive' "required 
-  Plugin 'kien/ctrlp.vim'     "파일 이름 검색 open
+  Plugin 'gmarik/Vundle.vim'           " required
+  Plugin 'tpope/vim-fugitive'          " required
+  Plugin 'kien/ctrlp.vim'              " 파일 검색 opener
   Plugin 'shougo/vimproc.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'jistr/vim-nerdtree-tabs'
-  Plugin 'nathanaelkane/vim-indent-guides'
-  Plugin 'scrooloose/syntastic' " 파일을 저장할 때 자동으로 문법 검사
+  Plugin 'scrooloose/syntastic'        " 파일을 저장할 때 자동으로 문법 검사
   Plugin 'tpope/vim-surround'
-  "Plugin 'rking/ag.vim'
-  Plugin 'yggdroot/indentline'
-  Plugin 'bling/vim-airline'
-  Plugin 'luochen1990/rainbow'   " 괄호 색깔을 다양하게 
-  Plugin 'kshenoy/vim-signature' " mark 위치를 표시해준다.
-  Plugin 'airblade/vim-gitgutter' " git diff 표시
   Plugin 'rking/ag.vim'
-  "Plugin 'taglist.vim'
-  Plugin 'matze/vim-move'         " <M-J>, <M-K> 로 선택한 라인을 위아래로 이동
+  Plugin 'yggdroot/indentline'         " 인덴트 라인을 보여준다. 속도 저하 문제가 있다. 적당히 토글해서 쓰자.
+  Plugin 'bling/vim-airline'           " TAB navigator, status line 을 제공한다.
+  Plugin 'luochen1990/rainbow'         " 괄호를 level 별로 다르게 색칠한다. html 태그에도 적용.
+  Plugin 'kshenoy/vim-signature'       " m mark 위치를 표시해준다.
+  Plugin 'airblade/vim-gitgutter'      " git diff 를 라인 넘버 옆에 표시.
+  Plugin 'matze/vim-move'              " <M-J>, <M-K> 로 선택한 라인을 위아래로 이동
   Plugin 'easymotion/vim-easymotion'
   Plugin 'johngrib/FlatColor-johngrib'
+  Plugin 'godlygeek/tabular'           " 텍스트 세로 정렬 도구
+  "Plugin 'ap/vim-css-color'           " #rrggbb 형식의 문자열에 색깔을 입혀준다.
+  Plugin 'tomtom/tcomment_vim'         " comment 플러그인. 비주얼 모드에서 gc, gc{motion} gcc 등으로 사용 가능하다.
+  Plugin 'raimondi/delimitmate'        " 따옴표, 괄호 등을 입력하면 닫는 따옴표,괄호를 추가해준다.
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
-
 " set 설정 ----------------------------------------------------------------------
 
-  set nocp       " vi 기능을 사용하지 않고, vim 만의 기능을 사용.
+  set nocp      " vi 기능을 사용하지 않고, vim 만의 기능을 사용.
 
   if has('mac')
-    set macmeta    " osx 에서 Meta 키 조합을 사용할 수 있게 한다.
+    set macmeta " osx 에서 Meta 키 조합을 사용할 수 있게 한다.
     "set guifont=Ubuntu\ Mono:h13
     "set guifont=monaco:h12
     "set guifont=inconsolata:h13
@@ -86,7 +86,6 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   \ exe "norm g`\"" |
   \ endif
 
-
   "colorscheme onedark 
   "colorscheme evolution
   "colorscheme dusk 
@@ -101,7 +100,6 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   "endif
 
 " map 설정 ----------------------------------------------------------------------
-
   nnoremap <F10>r :source ~/.vimrc<CR>
 
   " ctrl-j 로 라인을 분리. " http://goo.gl/qxOlY
@@ -117,6 +115,8 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   nnoremap <F3>     :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
   nnoremap <Space>r :CtrlP<CR>
   
+" Plugin 설정 -------------------------------------------------------------------
+
   " NERDTree 관련
   nnoremap <F12>n :NERDTreeToggle<CR>
   nnoremap <F12>m :NERDTreeMirrorToggle<CR>
@@ -125,7 +125,7 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   " rainbow
   nnoremap <F12>r :RainbowToggle<CR>
 
-" Easy motion 설정 -----------------------------------------------------------
+  " Easy motion
   let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
   "map <Leader> <Plug>(easymotion-prefix)
   nmap <Space>f <Plug>(easymotion-f)
@@ -138,8 +138,11 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   nmap <Space>k <Plug>(easymotion-k)
   nmap <Space>h <Plug>(easymotion-linebackward)
 
-" Syntastic 설정 --------------------------------------------------------------------
-" https://thechefprogrammer.blogspot.kr/2014/05/syntax-check-for-php-and-javascript.html
+  " indentline 설정
+  nnoremap <F12>i :IndentLinesToggle<CR>
+
+  " Syntastic 설정
+  " https://thechefprogrammer.blogspot.kr/2014/05/syntax-check-for-php-and-javascript.html
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
@@ -153,22 +156,20 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   "let g:syntastic_mode_map = { 'mode': 'passive' }
   "nnoremap <silent> <F6> :SyntasticCheck<CR>
 
-" 버퍼 관련 ------------------------------------------------------------------------
-" @link http://bakyeono.net/post/2015-08-13-vim-tab-madness-translate.html
-
-  " vim-airline 버퍼 목록 켜기 
-  let g:airline#extensions#tabline#enabled = 1
-  " vim-airline 버퍼 목록 파일명만 출력
-  let g:airline#extensions#tabline#fnamemod = ':t'
-
-  nnoremap <C-T> :enew<CR>  " 새로운 버퍼를 연다 
-  nnoremap gt :bnext!<CR>    " 다음 버퍼로 이동 
-  nnoremap gr :bprevious!<CR> " 이전 버퍼로 이동 
+  " vim-airline 버퍼 관련
+  " @link http://bakyeono.net/post/2015-08-13-vim-tab-madness-translate.html
+  let g:airline#extensions#tabline#enabled = 1     " vim-airline 버퍼 목록 켜기
+  let g:airline#extensions#tabline#fnamemod = ':t' " vim-airline 버퍼 목록 파일명만 출력
+  nnoremap <C-T> :enew<CR>       " 새로운 버퍼를 연다
+  nnoremap gt :bnext!<CR>        " 다음 버퍼로 이동
+  nnoremap gr :bprevious!<CR>    " 이전 버퍼로 이동
   nnoremap gq :bp <BAR> bd #<CR> " 현재 버퍼를 닫고 이전 버퍼로 이동
 
-" etc -------------------------------------------------------------------------
-
+  " rainbow
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+  " tabular
+  vnoremap <TAB> :Tabularize /
 
 " functions -------------------------------------------------------------------
 
