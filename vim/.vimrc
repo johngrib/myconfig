@@ -27,6 +27,7 @@ call vundle#begin()
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
+
 " set 설정 ----------------------------------------------------------------------
 
   set nocp       " vi 기능을 사용하지 않고, vim 만의 기능을 사용.
@@ -124,16 +125,33 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   " rainbow
   nnoremap <F12>r :RainbowToggle<CR>
 
-  " easy motion
+" Easy motion 설정 -----------------------------------------------------------
+  let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
   "map <Leader> <Plug>(easymotion-prefix)
-  map <Space>l <Plug>(easymotion-lineforward)
-  map <Space>j <Plug>(easymotion-j)
-  map <Space>k <Plug>(easymotion-k)
-  map <Space>h <Plug>(easymotion-linebackward)
+  nmap <Space>f <Plug>(easymotion-f)
+  nmap <Space>F <Plug>(easymotion-F)
+  nmap <Space>t <Plug>(easymotion-t)
+  nmap <Space>T <Plug>(easymotion-T)
+  nmap <Space>s <Plug>(easymotion-overwin-f)
+  nmap <Space>l <Plug>(easymotion-lineforward)
+  nmap <Space>j <Plug>(easymotion-j)
+  nmap <Space>k <Plug>(easymotion-k)
+  nmap <Space>h <Plug>(easymotion-linebackward)
 
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+" Syntastic 설정 --------------------------------------------------------------------
+" https://thechefprogrammer.blogspot.kr/2014/05/syntax-check-for-php-and-javascript.html
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 
-
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_php_checkers = ['php']
+  "let g:syntastic_check_on_wq = 0
+  "let g:syntastic_mode_map = { 'mode': 'passive' }
+  "nnoremap <silent> <F6> :SyntasticCheck<CR>
 
 " 버퍼 관련 ------------------------------------------------------------------------
 " @link http://bakyeono.net/post/2015-08-13-vim-tab-madness-translate.html
