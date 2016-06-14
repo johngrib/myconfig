@@ -18,7 +18,6 @@ call vundle#begin()
   Plugin 'luochen1990/rainbow'         " 괄호를 level 별로 다르게 색칠한다. html 태그에도 적용.
   Plugin 'kshenoy/vim-signature'       " m mark 위치를 표시해준다.
   Plugin 'airblade/vim-gitgutter'      " git diff 를 라인 넘버 옆에 표시.
-  Plugin 'matze/vim-move'              " <M-J>, <M-K> 로 선택한 라인을 위아래로 이동
   Plugin 'easymotion/vim-easymotion'
   Plugin 'johngrib/FlatColor-johngrib'
   Plugin 'godlygeek/tabular'           " 텍스트 세로 정렬 도구
@@ -61,6 +60,7 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   set showmatch        " 일치하는 괄호 하이라이팅
   set cursorline       " highlight current line
   set lazyredraw       " redraw only when we need to.
+  "set showcmd         " airline 플러그인과 충돌하기 때문에 주석처리
   nnoremap gv `[v`]    " highlight last inserted text
   
   " 사운드 벨, 비주얼 벨 비활성화
@@ -114,6 +114,12 @@ filetype plugin indent on " Put your non-Plugin stuff after this line
   nnoremap gn       :call ToggleNumber()<cr>
   nnoremap <F3>     :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
   nnoremap <Space>r :CtrlP<CR>
+
+  "Bubble single lines (kicks butt)
+  "http://vimcasts.org/episodes/bubbling-text/
+  nnoremap <A-k> ddkP
+  nnoremap <A-j> ddp
+  
   
 " Plugin 설정 -------------------------------------------------------------------
 
