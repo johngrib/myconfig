@@ -19,6 +19,7 @@
     <replacementvalue> <![CDATA[ Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS, ModifierFlag::EXTRA1, ]]> </replacementvalue>
   </replacementdef>
   <replacementdef>
+    123
     <replacementname>MOD</replacementname>
     <replacementvalue> <![CDATA[ ModifierFlag ]]> </replacementvalue>
   </replacementdef>
@@ -42,6 +43,32 @@
     <replacementname>FN</replacementname>
     <replacementvalue> <![CDATA[ ModifierFlag::FN ]]> </replacementvalue>
   </replacementdef>
+  
+  <!-- vk open url def -->
+  <vkopenurldef>
+    <name> KeyCode::VK_OPEN_URL_SHELL_move_mouse_1_center</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/Karabiner.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 middle 0 center 0
+      ]]>
+    </url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name> KeyCode::VK_OPEN_URL_SHELL_move_mouse_2_center</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/Karabiner.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 top -650 left -350
+      ]]>
+    </url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name> KeyCode::VK_OPEN_URL_SHELL_move_mouse_3_center</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/Karabiner.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 top -550 left +1600
+      ]]>
+    </url>
+  </vkopenurldef>
 
   <!-- items -->
   <item>
@@ -130,7 +157,8 @@
           __KeyToKey__
           KeyCode::1,
           @begin
-            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_0,
+            KeyCode::VK_OPEN_URL_SHELL_move_mouse_1_center,
+            PointingButton::LEFT
           @end
           {{MOD_EXT}}
         </autogen>
@@ -138,7 +166,17 @@
           __KeyToKey__
           KeyCode::2,
           @begin
-            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_1,
+            KeyCode::VK_OPEN_URL_SHELL_move_mouse_2_center,
+            PointingButton::LEFT
+          @end
+          {{MOD_EXT}}
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::3,
+          @begin
+            KeyCode::VK_OPEN_URL_SHELL_move_mouse_3_center,
+            PointingButton::LEFT
           @end
           {{MOD_EXT}}
         </autogen>
@@ -183,18 +221,6 @@
           KeyCode::F19,
           KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
           KeyCode::ESCAPE,
-        </autogen>
-      </item>
-      <item>
-        <modifier_only>ModifierFlag::EXTRA1</modifier_only>
-        <identifier>johngrib.f19_n_to_eng_esc</identifier>
-        <appendix>F19 + N 으로 영문전환ESC</appendix>
-        <autogen>
-        __KeyToKey__
-        KeyCode::N,
-        KeyCode::VK_CHANGE_INPUTSOURCE_TO_ENGLISH,
-        KeyCode::ESCAPE,
-        {{MOD_EXT}}
         </autogen>
       </item>
     </item>
